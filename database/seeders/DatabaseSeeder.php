@@ -2,24 +2,26 @@
 
 namespace Database\Seeders;
 
+use App\Models\Lavatory;
+use App\Models\LavatoryLog;
+use App\Models\Post;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $users = User::factory(20)->create();
+        $lavatories = Lavatory::factory(5)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        LavatoryLog::factory(35)->create([
+            'lavatory_id' => fn () => $lavatories->random()->id,
+            'user_id' => fn () => fake()->boolean(80) ? $users->random()->id : null,
+        ]);
+
+        Post::factory(25)->create([
+            'user_id' => fn () => $users->random()->id,
         ]);
     }
 }
