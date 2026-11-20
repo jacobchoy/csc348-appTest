@@ -6,6 +6,7 @@ use Database\Factories\LavatoryFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Lavatory extends Model
 {
@@ -24,5 +25,10 @@ class Lavatory extends Model
     public function lavatoryLogs(): HasMany
     {
         return $this->hasMany(LavatoryLog::class);
+    }
+
+    public function comments(): MorphMany
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 }

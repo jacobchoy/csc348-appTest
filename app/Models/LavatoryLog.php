@@ -19,6 +19,14 @@ class LavatoryLog extends Model
         'wait_time_minutes',
     ];
 
+    protected function casts(): array
+    {
+        return [
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
+        ];
+    }
+
     /**
      * Get the bathroom
      */

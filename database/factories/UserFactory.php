@@ -31,7 +31,8 @@ class UserFactory extends Factory
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
             'seat_number' => fake()->numberBetween(1, 30).fake()->randomElement(['A', 'B', 'C', 'D', 'E', 'F']),
-            'flight_number' => fake()->randomElement(['BA123', 'LH456', 'EK789', 'AA321']),
+            'flight_number' => fake()->randomElement(['BA007', 'AB123', 'UA888', 'WO456']),
+            'role' => 'passenger',
         ];
     }
 

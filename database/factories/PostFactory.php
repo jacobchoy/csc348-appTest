@@ -22,6 +22,7 @@ class PostFactory extends Factory
             'user_id' => User::factory(),
             'content' => fake()->sentence(),
             'category' => fake()->randomElement(['announcement', 'general', 'seat_swap']),
+            'image_path' => null,
         ];
     }
 }
